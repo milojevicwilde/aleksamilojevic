@@ -1,191 +1,112 @@
 /* ==========================================================================
-   ALEKSA MILOJEVIĆ
-   One screen, no scrolling. Header, bio, two links, footer.
-   Type:  Times New Roman, regular (name in the header)
-          Helvetica Neue, light (everything else)
-   System fonts only, nothing to load.
+   ALEKSA MILOJEVIĆ — personal site
+   Early-digital look: off-white screen, bitmap type (GNU Unifont, 8×16
+   pixels per glyph, used at exact multiples so every pixel stays square),
+   classic link blue, and a small pixel garden along the bottom.
    ========================================================================== */
 
+@font-face{
+  font-family: 'Unifont';
+  src: url('../fonts/unifont-latin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root{
-  /* background: muted cyan at the bottom, white at the top */
-  --bg-top:    #FFFFFF;
-  --bg-mid:    #E4F1F1;
-  --bg-bottom: #A9D3D5;
-
-  /* letters: magenta into purple */
-  --ink-1: #A3337F;   /* magenta */
-  --ink-2: #6B3A9E;   /* purple  */
-  --ink-gradient: linear-gradient(100deg, var(--ink-1) 0%, #8A3790 50%, var(--ink-2) 100%);
-
-  --rule: rgba(122, 54, 136, .16);
-  --grain: .55;        /* grain strength, 0 = off */
-
-  --f-display: 'Times New Roman', Times, 'Liberation Serif', Georgia, serif;
-  --f-body:    'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  --pad: clamp(20px, 5vw, 64px);
-  --header-h: clamp(68px, calc(3.4vw + 48px), 88px);
-  --footer-h: clamp(52px, 6vh, 66px);
-
-  /* bio text size; js/fit.js lowers it if the text would not fit */
-  --fs: clamp(13px, calc(.45vw + .9vh + 4px), 17px);
+  --paper: #F3F0E7;      /* off-white */
+  --ink:   #2A2622;      /* text */
+  --soft:  #6E675E;
+  --link:  #2340D8;      /* early-web link blue */
+  --pad:   clamp(20px, 7vw, 120px);
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
-
-html, body{
-  height: 100%;
-  margin: 0;
-  overflow: hidden;                 /* one screen, no scrolling */
-  overscroll-behavior: none;
-}
-html{
-  background: var(--bg-top);
-  -webkit-text-size-adjust: 100%;
-}
+html{ background: var(--paper); -webkit-text-size-adjust: 100%; }
 body{
-  height: 100vh;
-  height: 100dvh;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to top,
-    var(--bg-bottom) 0%,
-    #C6E2E3 30%,
-    var(--bg-mid) 62%,
-    var(--bg-top) 100%);
-  font-family: var(--f-body);
-  font-weight: 300;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Unifont', 'Courier New', monospace;
+  font-size: 16px;                /* Unifont's native size: crisp pixels */
+  line-height: 28px;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
+}
+::selection{ background: var(--link); color: var(--paper); }
+
+.page{
+  flex: 1 0 auto;
+  padding: clamp(48px, 11vh, 120px) var(--pad) 40px;
+}
+.bio{ max-width: 37em; }          /* about 74 characters per line */
+
+h1{
+  margin: 0 0 32px;
+  font-size: 48px;                /* 3 × 16 */
+  line-height: 48px;
+  font-weight: normal;
+  letter-spacing: 0;
+}
+p{ margin: 0 0 20px; }
+
+a{
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+a:hover, a:focus-visible{
+  background: var(--link);
+  color: var(--paper);
+  text-decoration: none;
+  outline: none;
 }
 
-/* film grain over the whole page */
-body::after{
-  content: "";
-  position: fixed;
-  inset: -50%;
-  z-index: 10;
-  pointer-events: none;
-  opacity: var(--grain);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.6' intercept='-.8'/%3E%3CfeFuncG type='linear' slope='2.6' intercept='-.8'/%3E%3CfeFuncB type='linear' slope='2.6' intercept='-.8'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
-  mix-blend-mode: soft-light;
-}
-
-a{ color: inherit; text-decoration: none; }
-p{ margin: 0; }
-ul{ margin: 0; padding: 0; list-style: none; }
-
-::selection{ background: rgba(163, 51, 127, .18); }
-:focus-visible{ outline: 1px solid var(--ink-1); outline-offset: 4px; }
-
-/* magenta-to-purple lettering */
-.ink{
-  background-image: var(--ink-gradient);
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--ink-1);              /* fallback */
-}
-
-/* ==========================================================================
-   HEADER — same size and face as the Milojević + Wilde wordmark, not bold
-   ========================================================================== */
-.site-header{
-  flex: none;
-  display: flex;
-  align-items: center;
-  height: var(--header-h);
-  padding: 0 var(--pad);
-  border-bottom: 1px solid var(--rule);
-}
-.wordmark{
-  margin: 0;
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  letter-spacing: .01em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-/* ==========================================================================
-   BIO — centred in the space between header and footer
-   ========================================================================== */
-.home{
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(12px, 3vh, 40px) var(--pad);
-}
-.bio{
-  width: 100%;
-  max-width: 40em;
-  font-size: var(--fs);
-  line-height: 1.6;
-}
-.bio p + p{ margin-top: .85em; }
-.nw{ white-space: nowrap; }
-
-/* the two links, softly pulsing */
-.links{
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4em 2.4em;
-  margin-top: 1.9em;
-  letter-spacing: .02em;
-}
-.links a{
+/* pixel garden along the bottom of the page */
+.garden{
   position: relative;
-  display: inline-block;
-}
-.links a::after{                    /* thin line, drawn in on hover */
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -.18em;
-  height: 1px;
-  background: var(--ink-gradient);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .35s ease;
-}
-.pulse{ animation: pulse 4.2s ease-in-out infinite; }
-.links li:nth-child(2) .pulse{ animation-delay: -2.1s; }
-@keyframes pulse{
-  0%, 100%{ opacity: 1; }
-  50%     { opacity: .42; }
-}
-.links a:hover,
-.links a:focus-visible{ animation: none; opacity: 1; }
-.links a:hover::after,
-.links a:focus-visible::after{ transform: scaleX(1); }
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.site-footer{
   flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-height: var(--footer-h);
-  padding: 0 var(--pad) env(safe-area-inset-bottom);
-  border-top: 1px solid var(--rule);
-  font-size: .72rem;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  height: clamp(190px, 30vh, 300px);
+  margin-top: -40px;               /* lets the bee fly up past the last line's spacing */
+  pointer-events: none;
+}
+.garden canvas{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
 }
 
+/* wide screens: the garden lives in the free space right of the text,
+   pinned to the bottom of the screen, always in view */
+@media (min-width: 900px){
+  .page{ position: relative; z-index: 1; }
+  .garden{ position: fixed; inset: 0; height: auto; margin: 0; z-index: 0; }
+}
+
+/* phones and tablets: the garden is a strip pinned to the bottom of the
+   screen; the text scrolls up behind it and fades out */
+@media (max-width: 899px){
+  .page{ padding-bottom: 190px; }
+  .garden{
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: calc(170px + env(safe-area-inset-bottom));
+    margin: 0;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(243,240,231,0) 0, rgba(243,240,231,.92) 38%, var(--paper) 52%);
+  }
+}
 @media (max-width: 600px){
-  .site-footer{ justify-content: flex-start; font-size: .66rem; letter-spacing: .06em; }
-  .links{ flex-direction: column; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .pulse{ animation: none; }
+  h1{ font-size: 32px; line-height: 32px; margin-bottom: 24px; }   /* 2 × 16 */
+  body{ line-height: 26px; }
 }
