@@ -12,8 +12,9 @@ images/share.png    Link preview image (1200×630)
 ```
 
 ## Deploy
-Replace everything in the repository with this folder's contents and **delete what is no longer here**:
-`js/` (city.js, garden.js, sprites.js) and `fonts/`. Cloudflare Pages / GitHub Pages: no build command,
+Upload this folder's contents to the repository, overwriting what's there. Nothing needs deleting:
+files from older versions (js/, fonts/) are simply no longer used. The icon files keep their old
+names, so uploading replaces the old icon. Cloudflare Pages / GitHub Pages: no build command,
 output directory root.
 
 ## The old icon in Google and browser tabs
