@@ -38,7 +38,7 @@ h1{
   padding-top: 25svh;
   font-size: 22px;
   line-height: 1.2;
-  font-weight: 300;               /* Helvetica Neue Light */
+  font-weight: 400;               /* same weight as the text, like SANAA */
   letter-spacing: .04em;
   text-transform: uppercase;
 }
