@@ -15,11 +15,11 @@
 <meta property="og:image" content="https://aleksamilojevic.com/images/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Aleksa Milojević, with pixel flowers, a bee and a sleeping dalmatian">
+<meta property="og:image:alt" content="Aleksa Milojević, above a pixel ideal city">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F3F0E7">
+<meta name="theme-color" content="#F9F9F7">
 
-<!-- Icons: browser tab, Google results, home screen (a pixel daisy) -->
+<!-- Icons -->
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
@@ -35,16 +35,19 @@
   "jobTitle": "Urban strategist, designer, researcher, and media producer",
   "birthPlace": "Vienna, Austria",
   "homeLocation": "New York City",
-  "alumniOf": ["TU Wien", "AHO Oslo School of Architecture and Design", "University of Applied Arts Vienna", "Tongji University", "Yale School of Architecture"]
+  "alumniOf": ["TU Wien", "AHO Oslo School of Architecture and Design", "University of Applied Arts Vienna", "Tongji University", "Yale University"]
 }
 </script>
 
 <link rel="preload" href="fonts/unifont-latin.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=1">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
-<main class="page">
+<!-- slow pixel clouds behind everything -->
+<div class="clouds" aria-hidden="true"><canvas></canvas></div>
+
+<main class="sky">
   <article class="bio">
     <h1>Aleksa Milojević</h1>
 
@@ -52,34 +55,26 @@
     researcher, and media producer. His work spans spatial planning, urban design, and audiovisual media,
     and addresses contemporary urban conditions, spatial symbolism, and sociocultural participation.</p>
 
-    <p>Milojević studied at <a href="https://www.tuwien.at/en/" target="_blank" rel="noopener">TU Wien</a>,
-    <a href="https://aho.no/en" target="_blank" rel="noopener">AHO</a> in Oslo, and the
-    <a href="https://www.dieangewandte.at/en" target="_blank" rel="noopener">University of Applied Arts Vienna</a>
-    under <a href="https://www.sanaa.co.jp" target="_blank" rel="noopener">Kazuyo Sejima</a>. He holds master’s
-    degrees from <a href="https://en.tongji.edu.cn" target="_blank" rel="noopener">Tongji University</a> and the
-    <a href="https://www.architecture.yale.edu" target="_blank" rel="noopener">Yale School of Architecture</a>,
-    where he studied under <a href="https://eisenmanarchitects.com" target="_blank" rel="noopener">Peter Eisenman</a>
-    and <a href="https://www.foga.com" target="_blank" rel="noopener">Frank Gehry</a>. His work has been exhibited
-    and screened at the <a href="https://www.guggenheim-bilbao.eus/en" target="_blank" rel="noopener">Guggenheim Museum Bilbao</a>,
-    <a href="https://www.autostadt.de/en" target="_blank" rel="noopener">Autostadt Wolfsburg</a>, the Yale School of
-    Architecture, and the <a href="https://ccam.yale.edu" target="_blank" rel="noopener">Yale Center for Collaborative Arts and Media</a>,
-    among others.</p>
+    <p>Milojević studied at TU Wien, AHO in Oslo, and the University of Applied Arts Vienna under
+    Kazuyo Sejima. He holds master’s degrees in architecture from Tongji University and Yale University,
+    where he studied under Peter Eisenman and Frank Gehry. His work has been exhibited and screened at
+    the Guggenheim Museum Bilbao, Autostadt Wolfsburg, the Yale School of Architecture, and the Yale
+    Center for Collaborative Arts and Media, among others.</p>
 
     <p>His professional background includes independent practice and collaborations with set designers,
     urban tech startups, and architecture offices in Europe and the United States, among them
-    <a href="https://www.tschapeller.com" target="_blank" rel="noopener">Wolfgang Tschapeller ZT</a> in Vienna,
-    <a href="http://mitarh.rs" target="_blank" rel="noopener">MITarh</a> in Belgrade, and
-    <a href="https://www.harthowerton.com" target="_blank" rel="noopener">Hart Howerton</a> in New York City.</p>
+    Wolfgang Tschapeller ZT in Vienna, MITarh in Belgrade, and Hart Howerton in New York City.</p>
 
     <p>Milojević is part of the design and urban planning collaborative
     <a href="https://milojevicwilde.com" target="_blank" rel="noopener">Milojević + Wilde</a> and serves on the
-    board of directors of VOGELFREI Media &amp; Information, a New York–based nonprofit dedicated to urban research.</p>
+    board of directors of <a href="https://www.vogelfrei-media.org" target="_blank" rel="noopener">VOGELFREI Media &amp; Information</a>,
+    a New York–based nonprofit dedicated to urban research.</p>
   </article>
 </main>
 
-<div class="garden" aria-hidden="true"><canvas></canvas></div>
+<!-- pixel ideal city along the bottom -->
+<div class="city" aria-hidden="true"><canvas></canvas></div>
 
-<script src="js/sprites.js?v=1" defer></script>
-<script src="js/garden.js?v=1" defer></script>
+<script src="js/city.js?v=1" defer></script>
 </body>
 </html>
