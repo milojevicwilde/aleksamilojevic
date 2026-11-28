@@ -15,11 +15,11 @@
 <meta property="og:image" content="https://aleksamilojevic.com/images/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Aleksa Milojević, above a pixel ideal city">
+<meta property="og:image:alt" content="Aleksa Milojević">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F9F9F7">
+<meta name="theme-color" content="#FFFFFF">
 
-<!-- Icons -->
+<!-- Icons (browser tab, Google results, home screen): AM monogram -->
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png">
@@ -39,18 +39,14 @@
 }
 </script>
 
-<link rel="preload" href="fonts/unifont-latin.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
-<!-- slow pixel clouds behind everything -->
-<div class="clouds" aria-hidden="true"><canvas></canvas></div>
+<main class="page">
+  <h1>Aleksa Milojević</h1>
 
-<main class="sky">
-  <article class="bio">
-    <h1>Aleksa Milojević</h1>
-
+  <div class="text">
     <p>Aleksa Milojević (born in Vienna, Austria) is a New York City-based urban strategist, designer,
     researcher, and media producer. His work spans spatial planning, urban design, and audiovisual media,
     and addresses contemporary urban conditions, spatial symbolism, and sociocultural participation.</p>
@@ -69,12 +65,8 @@
     <a href="https://milojevicwilde.com" target="_blank" rel="noopener">Milojević + Wilde</a> and serves on the
     board of directors of <a href="https://www.vogelfrei-media.org" target="_blank" rel="noopener">VOGELFREI Media &amp; Information</a>,
     a New York–based nonprofit dedicated to urban research.</p>
-  </article>
+  </div>
 </main>
 
-<!-- pixel ideal city along the bottom -->
-<div class="city" aria-hidden="true"><canvas></canvas></div>
-
-<script src="js/city.js?v=1" defer></script>
 </body>
 </html>

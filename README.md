@@ -1,28 +1,23 @@
 # Aleksa Milojević — personal site
 
-Static one-page site: plain HTML/CSS/JS, no build step.
+One static page in the manner of sanaa.co.jp: white, Helvetica, the name centred in the upper part of
+the screen, a small centred text below. No scripts, no web fonts.
 
 ```
-index.html          The page (text; only Milojević + Wilde and VOGELFREI are links)
-css/style.css       Styling: off-white sky, pixel type, link blue, layout
-js/city.js          The pixel ideal city along the bottom + the drifting clouds
-fonts/              GNU Unifont, Latin subset (pixel font; licence in fonts/README.txt)
-favicon.ico, images/favicon*, apple-touch-icon.png   Icons
+index.html          The page (only Milojević + Wilde and VOGELFREI are links)
+css/style.css       Styling
+favicon.ico, images/favicon.svg, favicon-48/96/192/512.png, apple-touch-icon.png
+                    "AM" monogram (Helvetica-style letters) for the browser tab, Google, home screens
 images/share.png    Link preview image (1200×630)
 ```
 
-## The city
-Drawn by `js/city.js`, pixel by pixel, after the Renaissance "Ideal City" panels (Urbino, Baltimore,
-Berlin): one-point perspective with the vanishing point exactly mid-screen, a round temple on the axis,
-palazzi receding on both sides, a patterned piazza, a pair of columns with statues, a few figures.
-It redraws to fit any screen: on wide screens the piazza widens and the palazzi gain storeys.
-Things to tweak near the top of the file: the palette (`C`), the palazzi (`STYLES`, `BLOCKS`,
-`HEIGHT`), the temple (`ZT`, `R`), the figures (`PEOPLE`).
-
-Clouds: a few small white clouds that move one pixel at a time (about one step every 1–2 seconds).
-Visitors who switch off animations in their system settings see them standing still.
-
 ## Deploy
-Upload everything to the repository, replacing the old files, and delete files that are no longer
-in this folder (`js/garden.js`, `js/sprites.js`). Cloudflare Pages / GitHub Pages: no build command,
+Replace everything in the repository with this folder's contents and **delete what is no longer here**:
+`js/` (city.js, garden.js, sprites.js) and `fonts/`. Cloudflare Pages / GitHub Pages: no build command,
 output directory root.
+
+## The old icon in Google and browser tabs
+- Browsers cache icons. After deploying, reload the page with Cmd+Shift+R (Ctrl+Shift+R on Windows);
+  if the old icon sticks, clear the browser cache or open the site in a private window.
+- Google shows the new icon after it next crawls the site. To speed this up: Google Search Console →
+  URL Inspection → enter the homepage → Request indexing. It can still take a few days.
